@@ -1,0 +1,99 @@
+@import '/src/root';
+
+
+.card {
+    width: 100%;
+
+    .card__line {
+        &::before {
+            position: relative;
+            top: 0;
+            left: 0;
+            content: "";
+            display: block;
+            width: 10px;
+            height: 100%;
+            background-color: $bs-success;
+
+        }
+    }
+
+    .card__body {
+        padding: 0 10px !important;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: space-between;
+
+        .card__title {
+            width: 100%;
+        }
+
+        .card-content__wrap {
+            width: 100%;
+            height: 100%;
+            display: flex;
+
+            .card__content {
+                width: 50%;
+                height: 100%;
+                display: flex;
+                align-content: flex-end;
+
+                .card__text {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-content: flex-end;
+                    width: 100%;
+
+                    .card-text__line {
+                        display: flex;
+                        width: 100%;
+
+                        &.--flex-left {
+                            justify-content: flex-start;
+                        }
+
+                        &.--flex-right {
+                            justify-content: flex-end;
+                        }
+
+                        &.--line-height-0-75 {
+                            line-height: 0.75;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+
+.section__wrap {
+    padding: 16px 0px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .section__line {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        &.--space-between {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &:not(:last-child) {
+            padding-bottom: 16px;
+        }
+
+        .--align-items-center {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
