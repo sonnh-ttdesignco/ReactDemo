@@ -1,6 +1,6 @@
 import classes from '../Calendar.module.scss';
 import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, FormGroup, FormLabel, MenuItem, Select, Stack, TextField } from '@mui/material'
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 function NoteForm(props) {
     let tempNoteCalendar = props.note;
@@ -15,6 +15,11 @@ function NoteForm(props) {
     const colorChangeHandle = (event) => {
         setNoteCalendar({ ...noteCalendar, color: event.target.value })
         tempNoteCalendar.color = event.target.value;
+    }
+
+    const contentChangeHandle = (event) => {
+        setNoteCalendar({ ...noteCalendar, content: event.target.value })
+        tempNoteCalendar.content = event.target.value;
     }
 
     const setValueChange = useCallback(() => {
@@ -43,7 +48,7 @@ function NoteForm(props) {
                     multiline
                     value={tempNoteCalendar ? tempNoteCalendar.content : ""}
                     rows={5}
-
+                    onChange={contentChangeHandle}
                 />
                 <FormGroup className={classes["note-form__group"]}>
                     <FormLabel component="legend" className={classes["group__label"]}>Privacy</FormLabel>

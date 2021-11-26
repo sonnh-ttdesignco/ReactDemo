@@ -310,6 +310,7 @@ function Calendar() {
             calendarValues = CALENDAR_DATA.filter(x => (x.isPublic === true && x.userId === user.userId) && format(new Date(x.date), "MM") === format(dayObj, "MM"))
         }
         setCalendarList({ list: calendarValues });
+        console.log('asdasd')
     }, [authUser, user, dayObj, CALENDAR_DATA])
 
     function handleCalendarNext() { //next month
@@ -356,33 +357,48 @@ function Calendar() {
 
     const changePrivacyHandle = (id) => {
         let item = CALENDAR_DATA.find(cd => cd.calendarId === id)
-        if (authUser.userId === item.userId) {
+        if (authUser.userId === item.userId && authUser.userId === user.userId) {
             item.isPublic = !item.isPublic;
         } else {
             return;
         }
     }
 
-    const saveNoteHandle = (note) => {
+    const saveNoteHandle = useCallback((note) => {
         let index = CALENDAR_DATA.findIndex(cd => cd.calendarId === note.calendarId);
-        if (authUser.user === note.userId) {
-            if (index > -1) {
-                let item = CALENDAR_DATA.find(cd => cd.calendarId === note.calendarId);
-                item = {
-                    ...item,
-                    date: note.date,
-                    userId: note.userId,
-                    content: note.content,
-                    color: note.color,
-                    isPublic: note.isPublic
-                }
-                CALENDAR_DATA = CALENDAR_DATA.slice(index, 1);
-                CALENDAR_DATA.push(item);
+
+        if (index > -1) {
+            let item = CALENDAR_DATA.find(cd => cd.calendarId === note.calendarId);
+            item = {
+                ...item,
+                date: note.date,
+                userId: note.userId,
+                content: note.content,
+                color: note.color,
+                isPublic: note.isPublic
             }
 
+            if (authUser.userId === user.userId) {
+                CALENDAR_DATA.splice(index, 1);
+                console.log('asdasd123123123', CALENDAR_DATA, index)
+                CALENDAR_DATA.push(item);
+            }
         }
-        console.log(index, note)
-    }
+        else {
+            let item = {
+                calendarId: `C${CALENDAR_DATA.length}`,
+                date: format(new Date, "yyyy/MM/dd"),
+                userId: authUser.userId,
+                content: note.content,
+                color: note.color,
+                isPublic: note.isPublic
+            }
+            if (authUser.userId === user.userId) {
+                console.log('11111111', CALENDAR_DATA, index)
+                CALENDAR_DATA.push(item);
+            }
+        }
+    }, [CALENDAR_DATA])
 
     //close menu user selection when clicked away
     function clickAwaySelectUser() {
@@ -403,7 +419,8 @@ function Calendar() {
 
     useEffect(() => {
         changeCalendarHandle();
-        setNoteById()
+        setNoteById();
+        console.log(calendarList.list, "render")
     }, [changeCalendarHandle, setNoteById])
 
     return (
