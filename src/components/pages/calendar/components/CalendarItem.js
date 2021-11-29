@@ -3,7 +3,7 @@ import { IconButton } from '@mui/material';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function CalendarItem(props) {
 
@@ -17,6 +17,10 @@ function CalendarItem(props) {
     const onOpenNoteHandle = () => {
         props.onOpenNoteForm(props.calendarItem.calendarId);
     }
+
+    useEffect(() => {
+        setPrivacy(props.calendarItem.isPublic);
+    }, [props.calendarItem.isPublic])
 
     return (
         <div className={`${classes["calendar-item"]} ${classes["calendar-item--" + props.calendarItem.color]}`}>

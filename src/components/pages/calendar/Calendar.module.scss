@@ -274,11 +274,13 @@
 
 .note-form__container {
     width: 400px;
-    height: 450px;
+    height: 500px;
     background-color: white;
     padding: 16px;
 
-    .note-form__input {}
+    .note-form__label {
+        margin-top: 16px;
+    }
 
     .note-form__group {
         margin-top: 16px;
@@ -289,7 +291,6 @@
             display: flex;
             align-items: center;
         }
-
 
         .group__selection {
             display: flex;

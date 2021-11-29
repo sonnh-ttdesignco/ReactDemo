@@ -1,15 +1,34 @@
 import classes from '../Calendar.module.scss';
-import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, FormGroup, FormLabel, MenuItem, Select, Stack, TextField } from '@mui/material'
-import { useCallback, useEffect, useState } from 'react';
+import { Autocomplete, Button, Checkbox, Chip, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, FormGroup, FormLabel, IconButton, MenuItem, Paper, Select, Stack, TextField } from '@mui/material'
+import { useEffect, useState } from 'react';
+import SaveIcon from '@mui/icons-material/Save';
 
 function NoteForm(props) {
-    let tempNoteCalendar = props.note;
+    let tempNoteCalendar = ({
+        calendarId: props.calendarId,
+        date: props.date,
+        userId: props.userId,
+        content: props.content,
+        color: props.color,
+        isPublic: props.isPublic,
+        assignTo: props.assignTo
+    })
 
-    const [noteCalendar, setNoteCalendar] = useState(tempNoteCalendar)
+    const [noteCalendar, setNoteCalendar] = useState({
+        calendarId: props.calendarId,
+        date: props.date,
+        userId: props.userId,
+        content: props.content,
+        color: props.color,
+        isPublic: props.isPublic,
+        assignTo: props.assignTo
+    })
+
+    const [userSelected, setUserSelected] = useState(props.assignTo);
 
     const checkBoxHandle = () => {
+        tempNoteCalendar.isPublic = !noteCalendar.isPublic;
         setNoteCalendar({ ...noteCalendar, isPublic: !noteCalendar.isPublic })
-        tempNoteCalendar.isPublic = !tempNoteCalendar.isPublic;
     }
 
     const colorChangeHandle = (event) => {
@@ -22,18 +41,41 @@ function NoteForm(props) {
         tempNoteCalendar.content = event.target.value;
     }
 
-    const setValueChange = useCallback(() => {
-        setNoteCalendar({ ...tempNoteCalendar })
-    }, [tempNoteCalendar])
+    const userSelectHandle = (event, values) => {
+        console.log('change', values)
+        setUserSelected(values);
+    }
 
     const saveFormHandle = () => {
-        props.onSaveNote(noteCalendar);
+        props.onSaveNote(noteCalendar, userSelected);
         props.onClose();
     }
 
     useEffect(() => {
-        setValueChange();
-    }, [setValueChange])
+        if (noteCalendar !== tempNoteCalendar) {
+            setNoteCalendar({
+                calendarId: tempNoteCalendar.calendarId,
+                date: props.date,
+                userId: tempNoteCalendar.userId,
+                content: tempNoteCalendar.content,
+                color: tempNoteCalendar.color,
+                isPublic: tempNoteCalendar.isPublic,
+                assignTo: userSelected
+            });
+        }
+        return (() => {
+            setUserSelected([]);
+            setNoteCalendar({
+                calendarId: props.calendarId,
+                date: props.date,
+                userId: props.userId,
+                content: props.content,
+                color: props.color,
+                isPublic: props.isPublic,
+                assignTo: props.assignTo
+            });
+        })
+    }, [props])
 
     return (
         <Dialog open={props.open} onClose={props.onClose}>
@@ -46,21 +88,21 @@ function NoteForm(props) {
                     fullWidth
                     variant="outlined"
                     multiline
-                    value={tempNoteCalendar ? tempNoteCalendar.content : ""}
+                    value={noteCalendar ? (noteCalendar.content ? noteCalendar.content : "") : ""}
                     rows={5}
                     onChange={contentChangeHandle}
                 />
                 <FormGroup className={classes["note-form__group"]}>
                     <FormLabel component="legend" className={classes["group__label"]}>Privacy</FormLabel>
                     <Stack direction="row" spacing={2}>
-                        <FormControlLabel control={<Checkbox checked={tempNoteCalendar ? (tempNoteCalendar.isPublic ? true : false) : true} />} onClick={checkBoxHandle} label="Public" />
-                        <FormControlLabel control={<Checkbox checked={tempNoteCalendar ? (tempNoteCalendar.isPublic ? false : true) : false} />} onClick={checkBoxHandle} label="Private" />
+                        <FormControlLabel control={<Checkbox checked={noteCalendar ? (noteCalendar.isPublic ? true : false) : true} />} onClick={checkBoxHandle} label="Public" />
+                        <FormControlLabel control={<Checkbox checked={noteCalendar ? (noteCalendar.isPublic ? false : true) : false} />} onClick={checkBoxHandle} label="Private" />
                     </Stack>
                 </FormGroup>
                 <FormControl className={classes["note-form__group"]}>
                     <FormLabel component="legend" className={classes["group__label"]}>Color</FormLabel>
                     <Select
-                        value={tempNoteCalendar ? tempNoteCalendar.color : ""}
+                        value={noteCalendar ? noteCalendar.color : ""}
                         onChange={colorChangeHandle}
                     >
                         <MenuItem value={"success"}>
@@ -85,11 +127,31 @@ function NoteForm(props) {
                         </MenuItem>
                     </Select>
                 </FormControl>
+
+                <div component="legend" className={classes["note-form__label"]}>Assign</div>
+                <Autocomplete className={classes["note-form__group"]}
+                    disabled={props.isAdmin ? false : true}
+                    multiple
+                    options={props.userList.map((option) => option.fullName)}
+                    defaultValue={props.assignTo}
+                    renderTags={(value, getTagProps) =>
+                        value.map((option, index) => (
+                            <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+                        ))
+                    }
+                    onChange={userSelectHandle}
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            variant="filled"
+                        />
+                    )}
+                />
             </DialogContent>
-            <DialogActions>
-                <Button sx={{ color: "white" }} className={`button --success`} onClick={saveFormHandle}>Save</Button>
+            <DialogActions sx={{ padding: "16px" }}>
+                <Button startIcon={<SaveIcon />} sx={{ color: "white" }} className={`button --success`} onClick={saveFormHandle}>Save</Button>
             </DialogActions>
-        </Dialog>
+        </Dialog >
     )
 }
 

@@ -23,7 +23,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U001",
         content: "Test data thật là dàiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
         color: "success",
-        isPublic: true
+        isPublic: true,
+        assignTo: ['asdas', 'asdasd']
     },
     {
         calendarId: "C002",
@@ -31,7 +32,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U001",
         content: "Test data",
         color: "info",
-        isPublic: false
+        isPublic: false,
+        assignTo: []
     },
     {
         calendarId: "C003",
@@ -39,7 +41,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U001",
         content: "Test data",
         color: "info",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C004",
@@ -47,7 +50,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U001",
         content: "Test data",
         color: "warning",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C005",
@@ -55,7 +59,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U001",
         content: "Test data",
         color: "danger",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C006",
@@ -63,7 +68,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U001",
         content: "Test data",
         color: "danger",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C007",
@@ -71,7 +77,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U001",
         content: "Test data",
         color: "info",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C008",
@@ -79,7 +86,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U001",
         content: "Test data",
         color: "warning",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C009",
@@ -87,7 +95,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U002",
         content: "Test data",
         color: "warning",
-        isPublic: false
+        isPublic: false,
+        assignTo: []
     },
     {
         calendarId: "C010",
@@ -95,7 +104,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U002",
         content: "Test data",
         color: "success",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C011",
@@ -103,7 +113,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U001",
         content: "Test data",
         color: "success",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C012",
@@ -111,7 +122,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U001",
         content: "Test data",
         color: "danger",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C013",
@@ -119,7 +131,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U002",
         content: "Test data",
         color: "info",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C014",
@@ -127,7 +140,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U002",
         content: "Test data",
         color: "danger",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C015",
@@ -135,7 +149,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U003",
         content: "Test data",
         color: "info",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C016",
@@ -143,7 +158,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U003",
         content: "Test data",
         color: "info",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
     {
         calendarId: "C017",
@@ -151,7 +167,8 @@ const DUMMY_CALENDAR_DATA = [
         userId: "U003",
         content: "Test data",
         color: "success",
-        isPublic: true
+        isPublic: true,
+        assignTo: []
     },
 ]
 
@@ -160,55 +177,64 @@ const DUMMY_USER_DATA = [
         userId: "U001",
         userName: "JohnWick",
         avatar: "https://media-cdn.laodong.vn/Storage/NewsPortal/2021/3/26/892912/John-Wick-Phan-4.jpg",
-        fullName: "Mr John 'Baba Yaga' Wick"
+        fullName: "Mr John 'Baba Yaga' Wick",
+        isAdmin: true
     },
     {
         userId: "U002",
         userName: "ThorOdinson",
         avatar: "https://hips.hearstapps.com/digitalspyuk.cdnds.net/18/14/1522871998-aif13.jpg?resize=480:*",
-        fullName: "Thor Odinson"
+        fullName: "Thor Odinson",
+        isAdmin: false
     },
     {
         userId: "U003",
         userName: "EddieBrock",
         avatar: "https://s31242.pcdn.co/wp-content/uploads/2021/09/Screenshot-2021-09-28-at-15.46.22.jpg",
-        fullName: "Eddie Brock x Venom"
+        fullName: "Eddie Brock x Venom",
+        isAdmin: false
     },
     {
         userId: "U004",
         userName: "DaenerysTargaryen",
         avatar: "https://pbs.twimg.com/profile_images/1220044684791308288/xGeuSMdZ.jpg",
-        fullName: "Daenerys Targaryen"
+        fullName: "Daenerys Targaryen",
+        isAdmin: false
     },
     {
         userId: "U005",
         userName: "ThomasShelby",
         avatar: "https://static-koimoi.akamaized.net/wp-content/new-galleries/2020/10/peaky-blinders-do-you-know-cillian-murphy-as-thomas-shelby-smoked-3000-cigarettes-in-just-2-seasons-002.jpg",
-        fullName: "Thomas Shelby"
+        fullName: "Thomas Shelby",
+        isAdmin: false
     },
     {
         userId: "U006",
         userName: "JonSnow",
         avatar: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/kit-harington-hair-jon-snow-1569167827.jpg?crop=0.439xw:0.878xh;0.0221xw,0.0306xh&resize=480:*",
-        fullName: "Jon Snow"
+        fullName: "Jon Snow",
+        isAdmin: false
     },
     {
         userId: "U007",
         userName: "MonkeyDLuffy",
         avatar: "https://www.fifteenlovers.com/wp-content/uploads/2021/03/monkey-d-luffy-quotes.png",
-        fullName: "Monkey D. Luffy"
+        fullName: "Monkey D. Luffy",
+        isAdmin: false
     },
     {
         userId: "U008",
         userName: "SonTungMtp",
         avatar: "https://kenh14cdn.com/203336854389633024/2021/11/22/13285652342587086741428035430233108735653736n-1622165532863738421439-16375700579971814039704.jpg",
-        fullName: "Sơn Tùng MTP"
+        fullName: "Sơn Tùng MTP",
+        isAdmin: false
     },
     {
         userId: "U009",
         userName: "ConnorMcGregor",
         avatar: "https://media-cdn.laodong.vn/Storage/NewsPortal/2020/1/7/777105/NINTCHDBPICT00047860.jpg",
-        fullName: "Connor McGregor"
+        fullName: "Connor McGregor",
+        isAdmin: false
     },
 ]
 
@@ -242,21 +268,24 @@ function Calendar() {
         userId: DUMMY_USER_DATA[0].userId,
         avatar: DUMMY_USER_DATA[0].avatar,
         fullName: DUMMY_USER_DATA[0].fullName,
+        isAdmin: DUMMY_USER_DATA[0].isAdmin
     })
     //only demo mode
-    const switchCurrentUserHandle = (newUser) => {
+    const switchCurrentUserHandle = useCallback((newUser) => {
         setCurrentUser({
             userId: newUser.userId,
             avatar: newUser.avatar,
             fullName: newUser.fullName,
+            isAdmin: newUser.isAdmin,
         })
-    }
+    })
 
     //owner of calendar
     const [user, setUser] = useState({
         userId: authUser.userId,
         avatar: authUser.avatar,
         fullName: authUser.fullName,
+        isAdmin: authUser.isAdmin
     })
     const [userList, setUserList] = useState({
         list: DUMMY_USER_DATA
@@ -285,7 +314,8 @@ function Calendar() {
         isPublic: true
     });
     const setNoteById = useCallback((noteId) => {
-        let note = calendarList.list.find(x => x.calendarId === noteId);
+        // let note = calendarList.list.find(x => x.calendarId === noteId);
+        let note = CALENDAR_DATA.find(x => x.calendarId === noteId);
         if (note) {
             setNoteCalendar(note);
         } else {
@@ -295,9 +325,22 @@ function Calendar() {
                 userId: null,
                 content: null,
                 color: "success",
-                isPublic: true
+                isPublic: true,
+                assignTo: []
             });
         }
+    }, [])
+
+    const setNoteByDate = useCallback((date) => {
+        setNoteCalendar({
+            calendarId: null,
+            date: date,
+            userId: null,
+            content: null,
+            color: "success",
+            isPublic: true,
+            assignTo: []
+        });
     }, [])
 
     //open modal form calendar
@@ -310,7 +353,6 @@ function Calendar() {
             calendarValues = CALENDAR_DATA.filter(x => (x.isPublic === true && x.userId === user.userId) && format(new Date(x.date), "MM") === format(dayObj, "MM"))
         }
         setCalendarList({ list: calendarValues });
-        console.log('asdasd')
     }, [authUser, user, dayObj, CALENDAR_DATA])
 
     function handleCalendarNext() { //next month
@@ -339,6 +381,7 @@ function Calendar() {
             userId: user.userId,
             avatar: user.avatar,
             fullName: user.fullName,
+            isAdmin: user.isAdmin
         })
         changeCalendarHandle();
     }
@@ -352,7 +395,11 @@ function Calendar() {
     const toggleNoteFormHandle = (note) => {
         setNoteById(note);
         setOpenNoteForm(!openNoteForm);
+    }
 
+    const createNewNoteByDate = (date) => {
+        setNoteByDate(date);
+        setOpenNoteForm(!openNoteForm);
     }
 
     const changePrivacyHandle = (id) => {
@@ -364,40 +411,83 @@ function Calendar() {
         }
     }
 
-    const saveNoteHandle = useCallback((note) => {
-        let index = CALENDAR_DATA.findIndex(cd => cd.calendarId === note.calendarId);
+    const saveNoteHandle = useCallback((note, userListParam) => {
+        console.log(userListParam);
+        if (userListParam.length > 0) {
+            userListParam.map(user => {
+                let userIdIndex = userList.list.findIndex(x => x.fullName === user);
+                if (userIdIndex > -1) {
+                    let userId = userList.list.find(x => x.fullName === user).userId;
+                    let index = CALENDAR_DATA.findIndex(cd => cd.calendarId === note.calendarId);
+                    if (index > -1) {
+                        let item = CALENDAR_DATA.find(cd => cd.calendarId === note.calendarId);
+                        item = {
+                            ...item,
+                            date: note.date,
+                            userId: userId,
+                            content: note.content,
+                            color: note.color,
+                            isPublic: note.isPublic,
+                            assignTo: userListParam
+                        }
 
-        if (index > -1) {
-            let item = CALENDAR_DATA.find(cd => cd.calendarId === note.calendarId);
-            item = {
-                ...item,
-                date: note.date,
-                userId: note.userId,
-                content: note.content,
-                color: note.color,
-                isPublic: note.isPublic
+                        // if (authUser.userId === user.userId) {
+                        //     CALENDAR_DATA[index] = item;
+                        // }
+
+                        CALENDAR_DATA[index] = item;
+                    }
+                    else {
+                        let item = {
+                            calendarId: `C${CALENDAR_DATA.length + 1}`,
+                            date: format(new Date(note.date), "yyyy/MM/dd"),
+                            userId: userId,
+                            content: note.content,
+                            color: note.color,
+                            isPublic: note.isPublic,
+                            assignTo: userListParam
+                        }
+                        CALENDAR_DATA.push(item);
+                    }
+                }
+            });
+        } else {
+            let index = CALENDAR_DATA.findIndex(cd => cd.calendarId === note.calendarId);
+            if (index > -1) {
+                let item = CALENDAR_DATA.find(cd => cd.calendarId === note.calendarId);
+                item = {
+                    ...item,
+                    date: note.date,
+                    userId: authUser.userId,
+                    content: note.content,
+                    color: note.color,
+                    isPublic: note.isPublic,
+                    assignTo: []
+                }
+
+                if (authUser.userId === user.userId) {
+                    CALENDAR_DATA[index] = item;
+                    console.log('2')
+                }
             }
-
-            if (authUser.userId === user.userId) {
-                CALENDAR_DATA.splice(index, 1);
-                console.log('asdasd123123123', CALENDAR_DATA, index)
-                CALENDAR_DATA.push(item);
+            else {
+                let item = {
+                    calendarId: `C${CALENDAR_DATA.length + 1}`,
+                    date: format(new Date(note.date), "yyyy/MM/dd"),
+                    userId: authUser.userId,
+                    content: note.content,
+                    color: note.color,
+                    isPublic: note.isPublic,
+                    assignTo: []
+                }
+                if (authUser.userId === user.userId) {
+                    CALENDAR_DATA.push(item);
+                    console.log('3')
+                }
             }
         }
-        else {
-            let item = {
-                calendarId: `C${CALENDAR_DATA.length}`,
-                date: format(new Date, "yyyy/MM/dd"),
-                userId: authUser.userId,
-                content: note.content,
-                color: note.color,
-                isPublic: note.isPublic
-            }
-            if (authUser.userId === user.userId) {
-                console.log('11111111', CALENDAR_DATA, index)
-                CALENDAR_DATA.push(item);
-            }
-        }
+
+        changeCalendarHandle();
     }, [CALENDAR_DATA])
 
     //close menu user selection when clicked away
@@ -418,10 +508,9 @@ function Calendar() {
     }
 
     useEffect(() => {
-        changeCalendarHandle();
         setNoteById();
-        console.log(calendarList.list, "render")
-    }, [changeCalendarHandle, setNoteById])
+        changeCalendarHandle();
+    }, [changeCalendarHandle, setNoteById, CALENDAR_DATA])
 
     return (
         <div className="main-content">
@@ -557,12 +646,18 @@ function Calendar() {
                                         ${format(addDays(startDayOfMonth, i), "dd") === format(today, "dd") ?
                                                 classes["date__container--active"] : ""}`} key={i}
                                         >
-                                            <Box className={`${classes["date"]}`} onDoubleClick={toggleNoteFormHandle}>
+                                            <Box className={`${classes["date"]}`} onDoubleClick={() => {
+                                                if (authUser.userId !== user.userId) {
+                                                    return;
+                                                }
+                                                createNewNoteByDate(format(addDays(startDayOfMonth, i), "yyyy/MM/dd"));
+                                            }
+                                            }>
                                                 <div className={classes["date__text"]}>
                                                     {format(addDays(startDayOfMonth, i), "dd")}
                                                 </div>
                                                 <Stack spacing={0.25} className={classes["scrollable"]} onChange={changeCalendarHandle}>
-                                                    {calendarList.list.filter(data => format(new Date(data.date), "dd/MM/yyyy") === format(addDays(startDayOfMonth, i), "dd/MM/yyyy")).map((d, index) => (
+                                                    {calendarList.list.filter(data => format(new Date(data.date), "yyyy/MM/dd") === format(addDays(startDayOfMonth, i), "yyyy/MM/dd")).map((d, index) => (
                                                         <CalendarItem
                                                             key={`${d}_${index}`}
                                                             calendarItem={d}
@@ -593,7 +688,18 @@ function Calendar() {
                 <div className="calendar">
                 </div>
             </Grid>
-            <NoteForm open={openNoteForm} onClose={toggleNoteFormHandle} note={noteCalendar} onSaveNote={saveNoteHandle} />
+            <NoteForm open={openNoteForm}
+                onClose={toggleNoteFormHandle}
+                calendarId={noteCalendar.calendarId}
+                content={noteCalendar.content}
+                color={noteCalendar.color}
+                userId={authUser.userId}
+                isPublic={noteCalendar.isPublic}
+                date={noteCalendar.date}
+                assignTo={noteCalendar.assignTo}
+                userList={userList.list}
+                isAdmin={authUser.isAdmin}
+                onSaveNote={saveNoteHandle} />
 
         </div >
 

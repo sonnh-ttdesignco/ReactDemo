@@ -7,7 +7,7 @@ function MainNavigation() {
             <div className={classes['page-topbar']}>
                 <div className={classes['navbar-header']}>
                     <div className={classes['']}>
-                        Top header
+
                     </div>
                 </div>
             </div>
